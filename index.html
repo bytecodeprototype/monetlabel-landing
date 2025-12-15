@@ -52,18 +52,13 @@
       background-attachment: fixed;
     }
     
-    /* BLOQUEO DE SCROLL CUANDO EL MODAL ESTÁ ABIERTO */
     body.modal-open { overflow: hidden; }
 
     h1, h2, h3 { font-family: var(--font-serif); color: var(--text); font-weight: 700; }
     a { text-decoration: none; color: inherit; transition: color 0.2s; }
     button { font-family: inherit; }
     
-    /* Icon Utility */
-    .icon {
-      width: 20px; height: 20px; stroke-width: 2px; stroke: currentColor;
-      fill: none; stroke-linecap: round; stroke-linejoin: round;
-    }
+    .icon { width: 20px; height: 20px; stroke-width: 2px; stroke: currentColor; fill: none; stroke-linecap: round; stroke-linejoin: round; }
 
     /* Layout */
     .container { width: min(92%, var(--max-w)); margin-inline: auto; }
@@ -77,11 +72,7 @@
       backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
     }
-    .nav {
-      display: flex; align-items: center; justify-content: space-between;
-      height: 72px; 
-    }
-    
+    .nav { display: flex; align-items: center; justify-content: space-between; height: 72px; }
     .logo { display: flex; align-items: center; height: 100%; text-decoration: none; }
     .logo img { height: 42px; width: auto; object-fit: contain; display: block; }
     .logo-text { font-family: var(--font-serif); font-size: 1.3rem; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase; color: var(--brand-dark); }
@@ -93,13 +84,10 @@
       transition: all 0.2s ease; cursor: pointer; border: none;
     }
     .btn-sm { padding: 8px 16px; font-size: 0.9rem; }
-    
     .btn-primary { background: var(--brand); color: white; border: 1px solid var(--brand); box-shadow: var(--shadow-sm); }
     .btn-primary:hover { background: var(--brand-dark); border-color: var(--brand-dark); transform: translateY(-2px); }
-    
     .btn-outline { border: 2px solid var(--border); background: transparent; color: var(--muted); font-weight: 600; }
     .btn-outline:hover { border-color: var(--brand); color: var(--brand); background: var(--surface); }
-
     .btn-whatsapp { background: var(--green-luxury); color: white; border: 1px solid var(--green-luxury); box-shadow: 0 4px 12px rgba(79, 111, 82, 0.2); }
     .btn-whatsapp:hover { background: #3A523D; border-color: #3A523D; transform: translateY(-2px); }
 
@@ -121,14 +109,21 @@
     .product-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); border-color: var(--brand-soft); }
     .product-img {
       background: radial-gradient(circle at center, rgba(139,90,60,0.05) 0%, transparent 70%);
-      padding: 2.5rem; position: relative; display: flex; justify-content: center;
-      align-items: center; height: 280px;
+      padding: 2rem; position: relative; display: flex; justify-content: center;
+      align-items: center; height: 320px; /* Aumenté un poco la altura para que las fotos reales respiren */
     }
+    /* Estilo de imagen ajustado para fotos reales */
     .product-img img {
-      max-width: 85%; height: auto; filter: drop-shadow(0 15px 25px rgba(0,0,0,0.15));
+      max-width: 90%; 
+      max-height: 90%; 
+      width: auto; 
+      height: auto; 
+      object-fit: contain; /* Asegura que la foto completa se vea */
+      filter: drop-shadow(0 10px 20px rgba(0,0,0,0.1));
       transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
-    .product-card:hover .product-img img { transform: scale(1.08) rotate(-3deg); }
+    .product-card:hover .product-img img { transform: scale(1.05); }
+    
     .badge {
       position: absolute; top: 16px; left: 16px; background: var(--brand); color: white;
       font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em;
@@ -146,8 +141,6 @@
       padding-top: 1.2rem; border-top: 1px solid var(--border);
     }
     .price { font-family: var(--font-serif); font-weight: 700; font-style: italic; font-size: 1.1rem; }
-    
-    /* Button Link (ahora es un button, no un <a>) */
     .btn-link {
       background: none; border: none; padding: 0; cursor: pointer;
       color: var(--brand); font-weight: 600; font-size: 0.9rem;
@@ -183,24 +176,21 @@
     .status-dot { width: 8px; height: 8px; background: #22c55e; border-radius: 50%; box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.15); }
     .status-text { font-size: 0.9rem; font-weight: 600; }
 
-    /* --- ESTILOS DEL MODAL --- */
+    /* Modal */
     .modal-backdrop {
       position: fixed; inset: 0; background: rgba(0,0,0,0.6); backdrop-filter: blur(5px);
       z-index: 1000; opacity: 0; visibility: hidden; transition: all 0.3s ease;
       display: grid; place-items: center; padding: 20px;
     }
     .modal-backdrop.active { opacity: 1; visibility: visible; }
-    
     .modal-content {
       background: var(--bg); width: 100%; max-width: 900px;
       border-radius: var(--radius); border: 1px solid var(--border);
       box-shadow: var(--shadow-lg); overflow: hidden;
       transform: translateY(20px); transition: all 0.3s ease;
-      display: grid; grid-template-columns: 1fr 1fr;
-      position: relative;
+      display: grid; grid-template-columns: 1fr 1fr; position: relative;
     }
     .modal-backdrop.active .modal-content { transform: translateY(0); }
-    
     .modal-close {
       position: absolute; top: 16px; right: 16px; z-index: 10;
       background: rgba(255,255,255,0.8); border: none; border-radius: 50%;
@@ -208,15 +198,12 @@
       transition: background 0.2s;
     }
     .modal-close:hover { background: #fff; transform: scale(1.1); }
-    
     .modal-left {
       background: radial-gradient(circle at center, rgba(139,90,60,0.1) 0%, transparent 70%);
       display: grid; place-items: center; padding: 40px;
     }
-    .modal-left img { max-width: 100%; height: auto; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.2)); }
-    
+    .modal-left img { max-width: 100%; max-height: 400px; height: auto; object-fit: contain; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.2)); }
     .modal-right { padding: 40px; display: flex; flex-direction: column; overflow-y: auto; max-height: 90vh; }
-    
     .modal-specs {
       display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;
       margin: 20px 0; padding: 20px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
@@ -224,17 +211,14 @@
     .spec-item b { display: block; font-size: 0.8rem; color: var(--brand); text-transform: uppercase; }
     .spec-item span { font-size: 0.95rem; color: var(--text); }
 
-    /* Responsive Modal */
     @media (max-width: 800px) {
       .modal-content { grid-template-columns: 1fr; max-height: 90vh; overflow-y: auto; }
-      .modal-left { padding: 30px; height: 250px; }
+      .modal-left { padding: 30px; height: 300px; }
       .modal-left img { max-height: 100%; }
       .modal-right { padding: 24px; }
     }
-
-    /* Footer & Mobile */
     @media (max-width: 768px) { .faq-grid { grid-template-columns: 1fr; } .hero h1 { font-size: 2.8rem; } .nav .btn-primary { display: none; } }
-    @media (max-width: 600px) { .floating-bar { width: calc(100% - 32px); justify-content: space-between; bottom: 16px; } .status-text { font-size: 0.85rem; } .product-img { height: 220px; } }
+    @media (max-width: 600px) { .floating-bar { width: calc(100% - 32px); justify-content: space-between; bottom: 16px; } .status-text { font-size: 0.85rem; } .product-img { height: 260px; } }
     footer { text-align: center; padding: 5rem 0; border-top: 1px solid var(--border); margin-top: 5rem; color: var(--muted); font-size: 0.9rem; background: var(--bg); }
   </style>
 </head>
@@ -286,7 +270,7 @@
           <article class="product-card">
             <div class="product-img">
               <span class="badge">Más Buscado</span>
-              <img src="https://pngimg.com/d/wrist_watch_PNG82.png" alt="Tissot PRX" loading="lazy">
+              <img src="assets/prx.jpg" alt="Tissot PRX" loading="lazy">
             </div>
             <div class="product-info">
               <small class="brand-label">Tissot</small>
@@ -305,7 +289,7 @@
           <article class="product-card">
             <div class="product-img">
               <span class="badge" style="background:var(--text); color:white;">Pieza de Culto</span>
-              <img src="https://pngimg.com/d/wrist_watch_PNG82.png" alt="Seiko Arabic" loading="lazy" style="filter: hue-rotate(180deg) brightness(0.9);"> 
+              <img src="assets/seiko5arabic.jpg" alt="Seiko Arabic" loading="lazy"> 
             </div>
             <div class="product-info">
               <small class="brand-label">Seiko</small>
@@ -324,7 +308,7 @@
           <article class="product-card">
             <div class="product-img">
               <span class="badge" style="background:var(--green-luxury);">Best Value</span>
-              <img src="https://pngimg.com/d/wrist_watch_PNG82.png" alt="Orient Ray II" loading="lazy" style="filter: sepia(0.3) contrast(1.1);">
+              <img src="assets/orientray.jpeg" alt="Orient Ray II" loading="lazy">
             </div>
             <div class="product-info">
               <small class="brand-label">Orient</small>
@@ -449,12 +433,11 @@
   <script>
     const NUMBER = "573001234567"; // 📱 Tu número aquí (sin el +)
 
-    // Base de datos de productos para el Modal
     const products = {
       tissot: {
         title: "Tissot PRX Powermatic 80",
         desc: "El reloj que definió una era, reinventado. Con su brazalete integrado y dial 'Ice Blue' con textura waffle, es la combinación perfecta de deportividad y elegancia. Maquinaria suiza automática con 80 horas de reserva.",
-        img: "https://pngimg.com/d/wrist_watch_PNG82.png",
+        img: "assets/prx.jpg",
         badge: "Más Buscado",
         specs: { case: "40mm", mov: "Automático 80h", glass: "Zafiro" },
         wa: "Hola, quiero comprar el Tissot PRX Ice Blue."
@@ -462,24 +445,21 @@
       seiko: {
         title: "Seiko 5 'Arabic Dial'",
         desc: "Una pieza de culto instantánea. Fabricado originalmente para el mercado de Oriente Medio, destaca por sus números indo-arábigos. Una rareza exótica en 40mm que todo coleccionista busca.",
-        img: "https://pngimg.com/d/wrist_watch_PNG82.png", // Recuerda cambiar esto por foto Seiko
+        img: "assets/seiko5arabic.jpg", /* OJO: Recuerda convertir tu .HEIC a .jpg */
         badge: "Pieza de Culto",
-        filter: "hue-rotate(180deg) brightness(0.9)", // Simulación de otro reloj
         specs: { case: "40mm", mov: "Automático 4R36", glass: "Hardlex" },
         wa: "Hola, me interesa el Seiko 5 Arabic Dial."
       },
       orient: {
         title: "Orient Ray II Diver",
         desc: "Posiblemente el mejor 'Diver' en su rango de precio. Certificación de 200 metros, corona roscada y un movimiento in-house robusto. El reloj herramienta definitivo para el día a día.",
-        img: "https://pngimg.com/d/wrist_watch_PNG82.png", // Recuerda cambiar esto por foto Orient
+        img: "assets/orientray.jpeg",
         badge: "Best Value",
-        filter: "sepia(0.3) contrast(1.1)", // Simulación de otro reloj
         specs: { case: "41.5mm", mov: "Automático F6922", glass: "Mineral" },
         wa: "Hola, quiero información del Orient Ray II."
       }
     };
 
-    // Lógica del Modal
     const modal = document.getElementById('modalBackdrop');
     const modalImg = document.getElementById('modalImg');
 
@@ -487,25 +467,21 @@
       const p = products[id];
       if(!p) return;
 
-      // Llenar datos
       document.getElementById('modalTitle').textContent = p.title;
       document.getElementById('modalDesc').textContent = p.desc;
       document.getElementById('modalBadge').textContent = p.badge;
       
-      // Imagen y filtros (para simular diferentes relojes con la misma imagen placeholder)
       modalImg.src = p.img;
-      modalImg.style.filter = p.filter || 'none';
+      // Quitamos filtros ya que ahora son fotos reales
+      modalImg.style.filter = 'none';
 
-      // Specs
       document.getElementById('specCase').textContent = p.specs.case;
       document.getElementById('specMov').textContent = p.specs.mov;
       document.getElementById('specGlass').textContent = p.specs.glass;
 
-      // Botón CTA
       const btn = document.getElementById('modalCta');
       btn.href = `https://wa.me/${NUMBER}?text=${encodeURIComponent(p.wa)}`;
 
-      // Mostrar
       modal.classList.add('active');
       document.body.classList.add('modal-open');
     }
@@ -515,19 +491,16 @@
       document.body.classList.remove('modal-open');
     }
 
-    // Cerrar al dar click fuera
     modal.addEventListener('click', (e) => {
       if (e.target === modal) closeProduct();
     });
 
-    // Cerrar con Escape
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && modal.classList.contains('active')) closeProduct();
     });
 
-    // Links generales
     document.querySelectorAll('[data-wa]').forEach(el => {
-      if(!el.id.includes('modal')) { // Ignorar el del modal que se llena dinámicamente
+      if(!el.id.includes('modal')) { 
         const text = encodeURIComponent(el.getAttribute('data-wa'));
         el.href = `https://wa.me/${NUMBER}?text=${text}`;
       }
